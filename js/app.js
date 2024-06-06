@@ -1,3 +1,7 @@
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+injectSpeedInsights();
+
 $(document).ready(function () {
     cardapio.eventos.init();
 });
