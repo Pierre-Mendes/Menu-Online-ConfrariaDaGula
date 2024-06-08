@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./img/logo-confraria.png" />
     <title>Menu - Confraria da Gula!</title>
 
     <!-- CSS -->
@@ -30,7 +31,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg pl-0 pr-0 col-one">
                 <a class="navbar-brand wow fadeIn remove-click" href="#">
-                    <img src="./img/logo-confraria.png" width="160" class="img-logo" />
+                    <img src="./img/logo-confraria.png" width="90" class="img-logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
                     <span class="navbar-toggler-icon">
@@ -38,13 +39,13 @@
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav ml-auto mr-auto wow fadeIn">
+                    <ul class="navbar-nav ml-auto mr-auto wow fadeIn letter-spacing-2">
                         <li class="nav-item"><a href="#encomendas" class="nav-link"><b>Encomendas</b></a></li>
                         <li class="nav-item"><a href="#servicos" class="nav-link"><b>Serviços</b></a></li>
                         <li class="nav-item"><a href="#cardapio" class="nav-link"><b>Cardápio</b></a></li>
                         <li class="nav-item"><a href="#depoimentos" class="nav-link"><b>Depoimentos</b></a></li>
                     </ul>
-                    <a class="btn btn-white btn-icon wow fadeIn" onclick="cardapio.metodos.abrirCarrinho(true)">
+                    <a class="btn btn-white btn-icon wow fadeIn letter-spacing-1" onclick="cardapio.metodos.abrirCarrinho(true)">
                         Meu carrinho <span class="icon"><div class="container-total-carrinho badge-total-carrinho hidden">0</div><i class="fa fa-shopping-bag"></i></span>
                     </a>
                 </div>
@@ -58,11 +59,15 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-one">
                     <div class="d-flex text-banner">
-                        <h1 class="wow fadeInLeft"><b>Escolha sua gostosura <b class="color-primary">favorita.</b></b></h1>
+                        <h1 class="wow fadeInLeft letter-spacing-1"><b>Escolha sua gostosura <b class="color-primary">favorita.</b></b></h1>
                         <p class="wow fadeInLeft delay-02s">Aproveite nosso cardápio! Escolha o que desejar, retire ou receba no conforto de sua casa de forma rápida e segura.</p>
                         <div class="wow fadeIn delay-05s">
-                            <a class="btn btn-yellow mt-4 mr-3">Ver cardápio</a>
-                            <a href="tel:+5534999648678" class="btn btn-white btn-icon-left mt-4" id="btnLigar"><span class="icon-left"><i class="fa fa-phone"></i></span>(34) 9 9964-8678</a>
+                            <a class="btn btn-yellow mt-4 mr-3 letter-spacing-2">Ver cardápio</a>
+                            <a href="tel:+5534999648678" class="btn btn-white btn-icon-left mt-4" id="btnLigar">
+                                <span class="icon-left">
+                                    <i class="fa fa-phone"></i>
+                                </span>(34) 9 9964-8678
+                            </a>
                         </div>
                     </div>
                     <a href="https://www.instagram.com/confrariadagula/" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mr-3 wow fadeIn delay-05s"><i class="fab fa-instagram"></i></a>
@@ -133,9 +138,7 @@
                     <a id="menu-burgers" class="btn btn-white btn-sm mr-3 active" onclick="cardapio.metodos.obterItensCardapio('burgers')"><i class="fas fa-people-carry"></i>&nbsp; Pronta Entrega</a>
                     <a id="menu-sobremesas" class="btn btn-white btn-sm mr-3" onclick="cardapio.metodos.obterItensCardapio('sobremesas')"><i class="fas fa-business-time"></i>&nbsp; Reservas</a>
                 </div>
-                <div class="col-12 col-one">
-                    <div class="row" id="itensCardapio"></div>
-                </div>
+                <div class="col-12 col-one"><div class="row" id="itensCardapio"></div></div>
                 <div class="col-12 col-one text-center wow fadeInUp">
                     <a id="btnVerMais" class="btn btn-white btn-sm" onclick="cardapio.metodos.verMais()">Ver mais</a>
                 </div>
@@ -143,14 +146,42 @@
         </div>
     </section>
 
-    <!-- Modal Detalhamento de Produtos -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="productInfo"></div>
-            <div id="cartActions">
-                <button id="addToCartBtn">Add to Cart</button>
-                <button id="removeFromCartBtn">Remove from Cart</button>
+    <!-- Modal de Detalhamento de Produtos -->
+    <div class="modal fade" id="modalProduto" tabindex="-1" role="dialog" aria-labelledby="modalProdutoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalProdutoLabel">Detalhes do Produto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="produtoImagens" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!-- Aqui serão adicionadas as imagens do produto -->
+                                </div>
+                                <a class="carousel-control-prev" href="#produtoImagens" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Anterior</span>
+                                </a>
+                                <a class="carousel-control-next" href="#produtoImagens" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Próximo</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="produtoNome"></h4>
+                            <p id="produtoDescricao"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -217,10 +248,10 @@
                     <div class="card-secondary wow fadeInUp">
                         <div class="row">
                             <div class="col-12 col-lg-7 col-md-7 col-sm-12">
-                                <span class="hint-title"><b>Encomendas</b></span>
-                                <h1 class="title"><b>Deseja fazer uma encomenda?</b></h1>
+                                <span class="hint-title letter-spacing-1"><b>Encomendas</b></span>
+                                <h1 class="title letter-spacing-2"><b>Deseja fazer uma encomenda?</b></h1>
                                 <p class="pr-5">Mande uma mensagem clicando no botão abaixo<br>Reserve sua data e horário de forma simples e rápida.</p>
-                                <a class="btn btn-yellow mt-4 wow fadeIn delay-05s" href="#" id="btnReserva" target="_blank">Fazer encomenda</a>
+                                <a class="btn btn-yellow mt-4 wow fadeIn delay-05s letter-spacing-2" href="#" id="btnReserva" target="_blank">Fazer encomenda</a>
                             </div>
                             <div class="col-5 no-mobile">
                                 <div class="card-reserva"></div>
@@ -270,7 +301,18 @@
         <div class="m-body">
             <div class="container">
                 <div id="itensCarrinho" class="row mr-0 ml-0 animated fadeIn hidden"></div>
-               
+                <div id="escolhaRetiradaEntrega" class="row mr-0 ml-0 animated fadeIn">
+                    <div class="col-12 text-center letter-spacing-1">
+                        <p><b>Você deseja retirar a compra ou solicitar entrega?</b></p>
+                        <button class="btn btn-yellow" onclick="cardapio.metodos.escolherRetirada()">Retirar</button>
+                        <button class="btn btn-yellow" onclick="cardapio.metodos.escolherEntrega()">Entrega</button>
+                    </div>
+                </div>
+                <div id="mensagemRetirada" class="row mr-0 ml-0 animated fadeIn hidden">
+                    <div class="col-12 text-center">
+                        <p><b>Certo! Iremos encaminhar a localização e o endereço de retirada para você!</b></p>
+                    </div>
+                </div>
                 <div id="localEntrega" class="row mr-0 ml-0 animated fadeIn hidden">
                     <div class="col-12 col-lg-4 col-md-4 col-sm-12">
                         <div class="form-group container-cep">
@@ -370,12 +412,12 @@
             <div class="container">
                 <div class="container-total text-right mb-4">
                     <p class="mb-0"><span>Subtotal:</span><span id="lblSubTotal">R$ 0,00</span></p>
-                    <p class="mb-0 texto-entrega"><span><i class="fas fa-motorcycle"></i> Entrega:</span><span id="lblValorEntrega">+ R$ 0,00</span></p>
                     <p class="mb-0 texto-total"><span><b>Total:</b></span><span class="valor-total"><b id="lblValorTotal">R$ 0,00</b></span></p>
                 </div>
                 <a onclick="cardapio.metodos.carregarEndereco()" class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
                 <a onclick="cardapio.metodos.resumoPedido()" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
-                <a href="#" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">Enviar pedido</a>
+                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">Enviar pedido</a>
+                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden" id="btnFinalizarPedido">Finalizar pedido</a>
                 <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white float-right mr-3 hidden" id="btnVoltar">Voltar</a>
             </div>
         </div>
