@@ -52,6 +52,14 @@ a.navbar-brand {
     padding-right: 35px!important;
 }
 
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
 .btn-white {
     background-color: var(--color-white);
     color: var(--color-black)!important;
@@ -458,7 +466,7 @@ footer {
 }
 
 .logo-footer {
-    width: 110px;
+    width: 80px;
 }
 
 .container-logo-footer, .container-texto-footer, .container-redes-footer {
