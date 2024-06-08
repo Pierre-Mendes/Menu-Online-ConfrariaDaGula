@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TBZJFJC5');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +30,13 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBZJFJC5" height="0" width="0"
+            style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Container de mensagens -->
     <div class="container-mensagens" id="container-mensagens"></div>
@@ -45,8 +66,12 @@
                         <li class="nav-item"><a href="#cardapio" class="nav-link"><b>Cardápio</b></a></li>
                         <li class="nav-item"><a href="#depoimentos" class="nav-link"><b>Depoimentos</b></a></li>
                     </ul>
-                    <a class="btn btn-white btn-icon wow fadeIn letter-spacing-1" onclick="cardapio.metodos.abrirCarrinho(true)">
-                        Meu carrinho <span class="icon"><div class="container-total-carrinho badge-total-carrinho hidden">0</div><i class="fa fa-shopping-bag"></i></span>
+                    <a class="btn btn-white btn-icon wow fadeIn letter-spacing-1"
+                        onclick="cardapio.metodos.abrirCarrinho(true)">
+                        Meu carrinho <span class="icon">
+                            <div class="container-total-carrinho badge-total-carrinho hidden">0</div><i
+                                class="fa fa-shopping-bag"></i>
+                        </span>
                     </a>
                 </div>
             </nav>
@@ -59,8 +84,10 @@
             <div class="row">
                 <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-one">
                     <div class="d-flex text-banner">
-                        <h1 class="wow fadeInLeft letter-spacing-1"><b>Escolha sua gostosura <b class="color-primary">favorita.</b></b></h1>
-                        <p class="wow fadeInLeft delay-02s">Aproveite nosso cardápio! Escolha o que desejar, retire ou receba no conforto de sua casa de forma rápida e segura.</p>
+                        <h1 class="wow fadeInLeft letter-spacing-1"><b>Escolha sua gostosura <b
+                                    class="color-primary">favorita.</b></b></h1>
+                        <p class="wow fadeInLeft delay-02s">Aproveite nosso cardápio! Escolha o que desejar, retire ou
+                            receba no conforto de sua casa de forma rápida e segura.</p>
                         <div class="wow fadeIn delay-05s">
                             <a class="btn btn-yellow mt-4 mr-3 letter-spacing-2">Ver cardápio</a>
                             <a href="tel:+5534999648678" class="btn btn-white btn-icon-left mt-4" id="btnLigar">
@@ -70,14 +97,20 @@
                             </a>
                         </div>
                     </div>
-                    <a href="https://www.instagram.com/confrariadagula/" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mr-3 wow fadeIn delay-05s"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/confraria.dagula" target="_blank" class="btn btn-sm btn-white btn-social mt-4 mr-3 wow fadeIn delay-05s"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=5534999648678" target="_blank" class="btn btn-sm btn-white btn-social mt-4 wow fadeIn delay-05s"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/confrariadagula/" target="_blank"
+                        class="btn btn-sm btn-white btn-social mt-4 mr-3 wow fadeIn delay-05s"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/confraria.dagula" target="_blank"
+                        class="btn btn-sm btn-white btn-social mt-4 mr-3 wow fadeIn delay-05s"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=5534999648678" target="_blank"
+                        class="btn btn-sm btn-white btn-social mt-4 wow fadeIn delay-05s"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
                 <div class="col-6 no-mobile align-items-center">
                     <div class="card-banner wow fadeIn delay-02s align-items-center">
                         <div class="d-flex img-banner wow fadeIn delay-05s align-items-center">
-                            <img src="./img/pudim-banner-svg.svg" height="600px" width="600px"/>
+                            <img src="./img/pudim-banner-svg.svg" height="600px" width="600px" />
                         </div>
                     </div>
                 </div>
@@ -118,7 +151,8 @@
                     </div>
                     <div class="card-text text-center mt-3">
                         <p><b>Aprecie nossos produtos!</b></p>
-                        <span>Não só a facilidade para realizar seu pedido, rapidez na entrega, a qualidade também é o nosso forte!</span>
+                        <span>Não só a facilidade para realizar seu pedido, rapidez na entrega, a qualidade também é o
+                            nosso forte!</span>
                     </div>
                 </div>
             </div>
@@ -135,10 +169,16 @@
                     <h1 class="title"><b>Conheça os nossos cardápios</b></h1>
                 </div>
                 <div class="col-12 col-one container-menu wow fadeInUp">
-                    <a id="menu-burgers" class="btn btn-white btn-sm mr-3 active" onclick="cardapio.metodos.obterItensCardapio('burgers')"><i class="fas fa-people-carry"></i>&nbsp; Pronta Entrega</a>
-                    <a id="menu-sobremesas" class="btn btn-white btn-sm mr-3" onclick="cardapio.metodos.obterItensCardapio('sobremesas')"><i class="fas fa-business-time"></i>&nbsp; Reservas</a>
+                    <a id="menu-burgers" class="btn btn-white btn-sm mr-3 active"
+                        onclick="cardapio.metodos.obterItensCardapio('burgers')"><i
+                            class="fas fa-people-carry"></i>&nbsp; Pronta Entrega</a>
+                    <a id="menu-sobremesas" class="btn btn-white btn-sm mr-3"
+                        onclick="cardapio.metodos.obterItensCardapio('sobremesas')"><i
+                            class="fas fa-business-time"></i>&nbsp; Reservas</a>
                 </div>
-                <div class="col-12 col-one"><div class="row" id="itensCardapio"></div></div>
+                <div class="col-12 col-one">
+                    <div class="row" id="itensCardapio"></div>
+                </div>
                 <div class="col-12 col-one text-center wow fadeInUp">
                     <a id="btnVerMais" class="btn btn-white btn-sm" onclick="cardapio.metodos.verMais()">Ver mais</a>
                 </div>
@@ -147,7 +187,8 @@
     </section>
 
     <!-- Modal de Detalhamento de Produtos -->
-    <div class="modal fade" id="modalProduto" tabindex="-1" role="dialog" aria-labelledby="modalProdutoLabel" aria-hidden="true">
+    <div class="modal fade" id="modalProduto" tabindex="-1" role="dialog" aria-labelledby="modalProdutoLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -206,35 +247,51 @@
                                 <div class="imagem-depoimento"></div>
                                 <div>
                                     <p class="nome-depoimento"><b>Diego Pereira</b></p>
-                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
+                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
                                 </div>
                             </div>
-                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>Muito bom, recomendo demais! Comida muito bem feita pelo chefe, atendimento dentro dos parâmetros e boa comunicação com o cliente.</span><i class="fas fa-quote-right"></i></p>
+                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>Muito bom, recomendo
+                                    demais! Comida muito bem feita pelo chefe, atendimento dentro dos parâmetros e boa
+                                    comunicação com o cliente.</span><i class="fas fa-quote-right"></i></p>
                         </div>
                         <div class="depoimento animated fadeIn hidden" id="depoimento-2">
                             <div class="container-dados-depoimento">
                                 <div class="imagem-depoimento"></div>
                                 <div>
                                     <p class="nome-depoimento"><b>Ana Beatriz</b></p>
-                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
+                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
                                 </div>
                             </div>
-                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>Um jantar perfeito do começo ao fim. Comida, experiência, serviço... foi tão maravilhoso que fomos dois dias seguidos - fato inédito para mim em uma viagem.</span><i class="fas fa-quote-right"></i></p>
+                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>Um jantar perfeito do
+                                    começo ao fim. Comida, experiência, serviço... foi tão maravilhoso que fomos dois
+                                    dias seguidos - fato inédito para mim em uma viagem.</span><i
+                                    class="fas fa-quote-right"></i></p>
                         </div>
                         <div class="depoimento animated fadeIn hidden" id="depoimento-3">
                             <div class="container-dados-depoimento">
                                 <div class="imagem-depoimento"></div>
                                 <div>
                                     <p class="nome-depoimento"><b>João Guilherme</b></p>
-                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
+                                    <p class="nota-depoimento"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>&nbsp; <span>5.0</span></p>
                                 </div>
                             </div>
-                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>A comida estava excelente e o serviço gentil nos surpreendeu! Dica: reserve umas 3 horas para ter uma experiência incrível.</span><i class="fas fa-quote-right"></i></p>
+                            <p class="texto-depoimento"><i class="fas fa-quote-left"></i><span>A comida estava excelente
+                                    e o serviço gentil nos surpreendeu! Dica: reserve umas 3 horas para ter uma
+                                    experiência incrível.</span><i class="fas fa-quote-right"></i></p>
                         </div>
                     </div>
-                    <a id="btnDepoimento-1" class="btn btn-sm btn-white btn-social wow fadeIn mr-3 active" onclick="cardapio.metodos.abrirDepoimento(1)">1</a>
-                    <a id="btnDepoimento-2" class="btn btn-sm btn-white btn-social wow fadeIn mr-3" onclick="cardapio.metodos.abrirDepoimento(2)">2</a>
-                    <a id="btnDepoimento-3" class="btn btn-sm btn-white btn-social wow fadeIn" onclick="cardapio.metodos.abrirDepoimento(3)">3</a>
+                    <a id="btnDepoimento-1" class="btn btn-sm btn-white btn-social wow fadeIn mr-3 active"
+                        onclick="cardapio.metodos.abrirDepoimento(1)">1</a>
+                    <a id="btnDepoimento-2" class="btn btn-sm btn-white btn-social wow fadeIn mr-3"
+                        onclick="cardapio.metodos.abrirDepoimento(2)">2</a>
+                    <a id="btnDepoimento-3" class="btn btn-sm btn-white btn-social wow fadeIn"
+                        onclick="cardapio.metodos.abrirDepoimento(3)">3</a>
                 </div>
             </div>
         </div>
@@ -250,8 +307,10 @@
                             <div class="col-12 col-lg-7 col-md-7 col-sm-12">
                                 <span class="hint-title letter-spacing-1"><b>Encomendas</b></span>
                                 <h1 class="title letter-spacing-2"><b>Deseja fazer uma encomenda?</b></h1>
-                                <p class="pr-5">Mande uma mensagem clicando no botão abaixo<br>Reserve sua data e horário de forma simples e rápida.</p>
-                                <a class="btn btn-yellow mt-4 wow fadeIn delay-05s letter-spacing-2" href="#" id="btnReserva" target="_blank">Fazer encomenda</a>
+                                <p class="pr-5">Mande uma mensagem clicando no botão abaixo<br>Reserve sua data e
+                                    horário de forma simples e rápida.</p>
+                                <a class="btn btn-yellow mt-4 wow fadeIn delay-05s letter-spacing-2" href="#"
+                                    id="btnReserva" target="_blank">Fazer encomenda</a>
                             </div>
                             <div class="col-5 no-mobile">
                                 <div class="card-reserva"></div>
@@ -318,7 +377,8 @@
                         <div class="form-group container-cep">
                             <label>CEP:</label>
                             <input id="txtCEP" type="text" class="form-control" />
-                            <a class="btn btn-yellow btn-sm" onclick="cardapio.metodos.buscarCep()"><i class="fa fa-search"></i></a>
+                            <a class="btn btn-yellow btn-sm" onclick="cardapio.metodos.buscarCep()"><i
+                                    class="fa fa-search"></i></a>
                         </div>
                     </div>
                     <div class="col-8 no-mobile"></div>
@@ -412,13 +472,19 @@
             <div class="container">
                 <div class="container-total text-right mb-4">
                     <p class="mb-0"><span>Subtotal:</span><span id="lblSubTotal">R$ 0,00</span></p>
-                    <p class="mb-0 texto-total"><span><b>Total:</b></span><span class="valor-total"><b id="lblValorTotal">R$ 0,00</b></span></p>
+                    <p class="mb-0 texto-total"><span><b>Total:</b></span><span class="valor-total"><b
+                                id="lblValorTotal">R$ 0,00</b></span></p>
                 </div>
-                <a onclick="cardapio.metodos.carregarEndereco()" class="btn btn-yellow float-right" id="btnEtapaPedido">Continuar</a>
-                <a onclick="cardapio.metodos.resumoPedido()" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">Revisar pedido</a>
-                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden" id="btnEtapaResumo" target="_blank">Enviar pedido</a>
-                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden" id="btnFinalizarPedido">Finalizar pedido</a>
-                <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white float-right mr-3 hidden" id="btnVoltar">Voltar</a>
+                <a onclick="cardapio.metodos.carregarEndereco()" class="btn btn-yellow float-right"
+                    id="btnEtapaPedido">Continuar</a>
+                <a onclick="cardapio.metodos.resumoPedido()" class="btn btn-yellow float-right hidden"
+                    id="btnEtapaEndereco">Revisar pedido</a>
+                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden"
+                    id="btnEtapaResumo" target="_blank">Enviar pedido</a>
+                <a onclick="cardapio.metodos.finalizarPedido()" class="btn btn-yellow float-right hidden"
+                    id="btnFinalizarPedido">Finalizar pedido</a>
+                <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white float-right mr-3 hidden"
+                    id="btnVoltar">Voltar</a>
             </div>
         </div>
     </div>
@@ -433,4 +499,5 @@
     <script type="text/javascript" src="./js/app.js"></script>
     <script>new WOW().init();</script>
 </body>
+
 </html>
