@@ -13,6 +13,11 @@ let CLIENTE_ENTREGA = "Entrega de Pedido!";
 
 const CELULAR_EMPRESA = "5534999648678";
 
+const categoryMap = {
+    pascoa: "pascoa",
+    sobremesas: "sobremesas"
+};
+
 const debounce = (func, delay) => {
     let debounceTimer;
     return function (...args) {
@@ -34,7 +39,7 @@ cardapio.eventos = {
 };
 
 cardapio.metodos = {
-    obterItensCardapio: (categoria = "burgers", vermais = false) => {
+    obterItensCardapio: (categoria = "pascoa", vermais = false) => {
         const filtro = MENU[categoria];
 
         if (!vermais) {
@@ -54,7 +59,7 @@ cardapio.metodos = {
         });
 
         $(".container-menu a").removeClass("active");
-        $(`#menu-${categoria}`).addClass("active");
+        $(`#menu-${categoryMap[categoria] || categoria}`).addClass("active");
     },
 
     verMais: () => {
@@ -258,9 +263,6 @@ cardapio.metodos = {
             (acc, e) => acc + parseFloat(e.price * e.qntd),
             0
         );
-        $("#lblSubTotal").text(
-            `R$ ${cardapio.VALOR_CARRINHO.toFixed(2).replace(".", ",")}`
-        );
         $("#lblValorTotal").text(
             `R$ ${cardapio.VALOR_CARRINHO.toFixed(2).replace(".", ",")}`
         );
@@ -459,27 +461,76 @@ cardapio.metodos = {
     escolherEntrega: () => {
         cardapio.metodos.carregarEtapa(3);
     },
-};
 
-function mostrarDetalhes() {
-    // Aqui você pode obter os detalhes do produto clicado e atualizar o conteúdo da modal
-    var nomeProduto = "Nome do Produto";
-    var descricao = "Descrição detalhada do produto.";
-    var caracteristicas = "Características do produto.";
+    abrirModalProduto: (id) => {
+        const menuAtivo = $(".container-menu a.active");
 
-    // Atualiza o conteúdo da modal
-    document.getElementById("nomeProdutoModal").innerText = nomeProduto;
-    document.getElementById("descricaoModal").innerText = descricao;
-    document.getElementById("caracteristicasModal").innerText = caracteristicas;
+        if (menuAtivo.length > 0) {
+            const categoriaId = menuAtivo.attr("id").split("menu-")[1];
+            const categoria = this.categoryMap[categoriaId] || categoriaId;
 
-    // Abre a modal
-    $("#detalhesModal").modal("show");
+            if (MENU[categoria]) {
+                const produto = MENU[categoria].find((e) => e.id === id);
+
+                if (produto) {
+                    $("#produtoNome").text(produto.name);
+                    $("#produtoDescricao").text(produto.descricao);
+                    $("#produtoPreco").text(produto.price.toFixed(2).replace(".", ","));
+
+                    const carouselInner = $("#carouselInner");
+                    carouselInner.html("");
+
+                    produto.imagens.forEach((imagem, index) => {
+                        const item = document.createElement("div");
+                        item.classList.add("carousel-item");
+                        if (index === 0) item.classList.add("active");
+                        item.innerHTML = `<img src="${imagem}" class="d-block w-100" alt="${produto.name}">`;
+                        carouselInner.append(item);
+                    });
+
+                    $("#modalProduto").modal("show");
+                } else {
+                    console.error(`Produto com ID "${id}" não encontrado na categoria "${categoria}".`);
+                }
+            } else {
+                console.error(`Categoria "${categoria}" não encontrada no objeto MENU.`);
+            }
+        } else {
+            console.error("Nenhum item do menu está ativo.");
+        }
+    },
+
+    adicionarAoCarrinhoModal: () => {
+        const quantidade = parseInt($("#quantidadeProduto").val());
+        const categoria = $(".container-menu a.active").attr("id").split("menu-")[1];
+        const produto = MENU[categoria].find((e) => e.id === $("#produtoNome").attr("data-id"));
+
+        if (produto && quantidade > 0) {
+            const existe = MEU_CARRINHO.find((elem) => elem.id === produto.id);
+
+            if (existe) {
+                existe.qntd += quantidade;
+            } else {
+                produto.qntd = quantidade;
+                MEU_CARRINHO.push(produto);
+            }
+
+            cardapio.metodos.mensagem("Item adicionado ao carrinho", "green");
+            cardapio.metodos.atualizarBadgeTotal();
+            cardapio.metodos.carregarCarrinho();
+            cardapio.metodos.salvarCarrinhoLocalStorage();
+
+            // Fecha a modal após adicionar ao carrinho
+            $("#modalProduto").modal("hide");
+        }
+    },
+
 };
 
 cardapio.templates = {
     item: `
         <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
-            <div class="card card-item" id="\${id}">
+            <div class="card card-item" id="\${id}"">
                 <div class="img-produto">
                     <img src="\${img}" />
                 </div>
@@ -516,7 +567,7 @@ cardapio.templates = {
     itemResumo: `
         <div class="col-12 item-carrinho resumo">
             <div class="img-produto-resumo">
-                <img src="\${img}" />
+                <img src="\${img}"  alt=""/>
             </div>
             <div class="dados-produto">
                 <p class="title-produto-resumo"><b>\${nome}</b></p>

@@ -94,6 +94,7 @@
         overflow-y: hidden;
         display: flex;
         padding-bottom: 15px;
+        scrollbar-width: thin;
     }
 
     .img-produto {
@@ -113,15 +114,15 @@
     }
 
     .title-produto {
-        margin-top: 0px!important;
+        margin-top: 0 !important;
         height: 30px!important;
         width: 100%;
         text-align: left!important;
     }
 
     .price-produto {
-        margin-bottom: 0px!important;
-        margin-top: 0px!important;
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
         font-size: 22px!important;
     }
 
@@ -195,5 +196,14 @@
     .modal-full .form-control {
         font-size: 16px;
     }
+
+    .btn-encomenda {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 100%;
+    }
+
 
 }
