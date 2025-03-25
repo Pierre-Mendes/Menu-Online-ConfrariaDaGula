@@ -527,66 +527,92 @@ cardapio.metodos = {
         cardapio.metodos.carregarEtapa(3);
     },
 
-    abrirModalProduto: (id) => {
+    abrirDetalhesProduto: (id) => {
         const menuAtivo = $(".container-menu a.active");
-
         if (menuAtivo.length > 0) {
-            const categoriaId = menuAtivo.attr("id").split("menu-")[1];
-            const categoria = this.categoryMap[categoriaId] || categoriaId;
+            const categoria = menuAtivo.attr("id").split("menu-")[1];
+            const produto = MENU[categoria].find((e) => e.id === id);
 
-            if (MENU[categoria]) {
-                const produto = MENU[categoria].find((e) => e.id === id);
+            if (produto) {
+                const itemNoCarrinho = MEU_CARRINHO.find(item => item.id === id);
+                const quantidadeInicial = itemNoCarrinho ? itemNoCarrinho.qntd : 0;
+                const textoBotao = itemNoCarrinho ? "Atualizar Carrinho" : "Adicionar ao Carrinho";
 
-                if (produto) {
-                    $("#produtoNome").text(produto.name);
-                    $("#produtoDescricao").text(produto.descricao);
-                    $("#produtoPreco").text(produto.price.toFixed(2).replace(".", ","));
+                $("#detalhesProdutoTitulo").text(produto.name);
+                $("#detalhesProdutoNome").text(produto.name);
+                $("#detalhesProdutoDescricaoCurta").text(produto.dsc);
+                $("#detalhesProdutoPreco").text(`R$ ${produto.price.toFixed(2).replace(".", ",")}`);
+                $("#detalhesProdutoDescricao").text(produto.descricao || "Descrição detalhada do produto.");
+                $("#quantidadeModal").text(quantidadeInicial || "0");
+                $("#textoBotaoModal").text(textoBotao);
 
-                    const carouselInner = $("#carouselInner");
-                    carouselInner.html("");
+                const carouselInner = $("#carouselProdutoInner");
+                carouselInner.html("");
 
-                    produto.imagens.forEach((imagem, index) => {
-                        const item = document.createElement("div");
-                        item.classList.add("carousel-item");
-                        if (index === 0) item.classList.add("active");
-                        item.innerHTML = `<img src="${imagem}" class="d-block w-100" alt="${produto.name}">`;
-                        carouselInner.append(item);
-                    });
+                const imagens = produto.imagens || [produto.img];
+                imagens.forEach((imagem, index) => {
+                    const item = document.createElement("div");
+                    item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+                    item.innerHTML = `
+                    <img src="${imagem}" class="d-block w-100 img-fluid rounded" alt="${produto.name}">
+                `;
+                    carouselInner.append(item);
+                });
 
-                    $("#modalProduto").modal("show");
-                } else {
-                    console.error(`Produto com ID "${id}" não encontrado na categoria "${categoria}".`);
-                }
+                $("#modalDetalhesProduto").data("produto-id", id);
+                $("#modalDetalhesProduto").modal("show");
             } else {
-                console.error(`Categoria "${categoria}" não encontrada no objeto MENU.`);
+                console.error("Produto não encontrado");
             }
-        } else {
-            console.error("Nenhum item do menu está ativo.");
         }
     },
 
+    alterarQuantidadeModal: (operacao) => {
+        const quantidadeElement = $("#quantidadeModal");
+        let quantidade = parseInt(quantidadeElement.text()) || 0;
+
+        if (operacao === "aumentar") {
+            quantidade++;
+        } else if (operacao === "diminuir" && quantidade > 0) {
+            quantidade--;
+        }
+
+        quantidadeElement.text(quantidade);
+    },
+
     adicionarAoCarrinhoModal: () => {
-        const quantidade = parseInt($("#quantidadeProduto").val());
-        const categoria = $(".container-menu a.active").attr("id").split("menu-")[1];
-        const produto = MENU[categoria].find((e) => e.id === $("#produtoNome").attr("data-id"));
+        const id = $("#modalDetalhesProduto").data("produto-id");
+        const quantidade = parseInt($("#quantidadeModal").text()) || 0;
 
-        if (produto && quantidade > 0) {
-            const existe = MEU_CARRINHO.find((elem) => elem.id === produto.id);
+        if (id && quantidade > 0) {
+            const menuAtivo = $(".container-menu a.active");
+            if (menuAtivo.length > 0) {
+                const categoria = menuAtivo.attr("id").split("menu-")[1];
+                const produto = MENU[categoria].find((e) => e.id === id);
 
-            if (existe) {
-                existe.qntd += quantidade;
-            } else {
-                produto.qntd = quantidade;
-                MEU_CARRINHO.push(produto);
+                if (produto) {
+                    const existeIndex = MEU_CARRINHO.findIndex((elem) => elem.id == id);
+
+                    if (existeIndex !== -1) {
+                        MEU_CARRINHO[existeIndex].qntd = quantidade;
+                        cardapio.metodos.mensagem("Quantidade atualizada no carrinho", "green");
+                    } else {
+                        const novoItem = {...produto, qntd: quantidade};
+                        MEU_CARRINHO.push(novoItem);
+                        cardapio.metodos.mensagem("Produto adicionado ao carrinho", "green");
+                    }
+
+                    cardapio.metodos.atualizarBadgeTotal();
+                    cardapio.metodos.carregarCarrinho();
+                    cardapio.metodos.salvarCarrinhoLocalStorage();
+
+                    $(`#qntd-${id}`).text(quantidade);
+                    cardapio.metodos.atualizarBotaoAcao(id);
+                    $("#modalDetalhesProduto").modal("hide");
+                }
             }
-
-            cardapio.metodos.mensagem("Item adicionado ao carrinho", "green");
-            cardapio.metodos.atualizarBadgeTotal();
-            cardapio.metodos.carregarCarrinho();
-            cardapio.metodos.salvarCarrinhoLocalStorage();
-
-            // Fecha a modal após adicionar ao carrinho
-            $("#modalProduto").modal("hide");
+        } else {
+            cardapio.metodos.mensagem("Quantidade não pode ser zero", "red");
         }
     },
 
@@ -596,7 +622,7 @@ cardapio.templates = {
     item: `
         <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
             <div class="card card-item" id="\${id}">
-                <div class="img-produto">
+                <div class="img-produto" onclick="cardapio.metodos.abrirDetalhesProduto('\${id}')" style="cursor: pointer;">
                     <img src="\${img}" />
                 </div>
                 <p class="title-produto text-center mt-4"><b>\${nome}</b></p>

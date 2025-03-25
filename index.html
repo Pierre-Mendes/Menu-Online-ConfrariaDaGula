@@ -330,6 +330,64 @@
     </div>
 </footer>
 
+<!-- Modal de Detalhes do Produto -->
+<div class="modal fade" id="modalDetalhesProduto" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detalhesProdutoTitulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Carrossel de Imagens -->
+                    <div class="col-md-6">
+                        <div id="carouselProduto" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" id="carouselProdutoInner">
+                                <!-- Imagens serão injetadas via JavaScript -->
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselProduto" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Anterior</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselProduto" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Próximo</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Detalhes do Produto -->
+                    <div class="col-md-6">
+                        <h4 id="detalhesProdutoNome"></h4>
+                        <p class="text-muted" id="detalhesProdutoDescricaoCurta"></p>
+                        <p id="detalhesProdutoDescricao"></p>
+                        <p class="lead" id="detalhesProdutoPreco"></p>
+
+                        <div class="mt-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <button class="btn btn-outline-secondary btn-sm" onclick="cardapio.metodos.alterarQuantidadeModal('diminuir')">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="mx-3" id="quantidadeModal">1</span>
+                                <button class="btn btn-outline-secondary btn-sm" onclick="cardapio.metodos.alterarQuantidadeModal('aumentar')">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-primary btn-block" onclick="cardapio.metodos.adicionarAoCarrinhoModal()">
+                                <i class="fa fa-shopping-bag mr-2"></i>
+                                <span id="textoBotaoModal">Adicionar ao Carrinho</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal do Carrinho -->
 <div class="modal-full animated fadeIn hidden" id="modalCarrinho">
     <div class="m-header">

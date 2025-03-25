@@ -8,9 +8,9 @@ const MENU = {
             "price": 39.99,
             "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
             "imagens": [
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-2.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-3.jpg"
+                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
+                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
+                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
             ]
         },
         {
@@ -21,9 +21,9 @@ const MENU = {
             "price": 39.95,
             "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
             "imagens": [
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-2.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-3.jpg"
+                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
+                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
+                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
             ]
         },
         {
@@ -34,9 +34,9 @@ const MENU = {
             "price": 69,
             "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
             "imagens": [
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-2.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-3.jpg"
+                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
+                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
+                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
             ]
         },
         {
@@ -47,9 +47,9 @@ const MENU = {
             "price": 65,
             "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
             "imagens": [
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-2.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-3.jpg"
+                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
+                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
+                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
             ]
         },
         {
@@ -60,9 +60,9 @@ const MENU = {
             "price": 89,
             "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
             "imagens": [
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends.6710e994980e485e6441b794717ad6fb.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-2.jpg",
-                "./img/cardapio/churrasco/joes-kc-ribs-brisket-and-burnt-ends-3.jpg"
+                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
+                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
+                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
             ]
         },
     ],
