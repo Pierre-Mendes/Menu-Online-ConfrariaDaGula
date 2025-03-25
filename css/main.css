@@ -278,12 +278,20 @@ a.navbar-brand {
 }
 
 .card-item {
-    height: 360px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
 }
 
 .card-item .img-produto img {
     width: 100%;
-    border-radius: 11px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
 .card-item .title-produto {
@@ -344,6 +352,7 @@ a.navbar-brand {
     color: var(--color-white);
     background-color: var(--color-black-heavy);
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .card-item:hover {
@@ -818,4 +827,27 @@ select.form-control {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 10px;
+}
+
+.taxa-entrega-aviso {
+    background-color: #fff8e1;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #ffc107;
+    color: #5d4037;
+}
+
+.taxa-entrega-aviso i {
+    color: #ff9800;
+    margin-right: 5px;
+}
+
+#btnVerMais {
+    margin: 30px auto;
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+#btnVerMais.hidden {
+    display: none !important;
 }

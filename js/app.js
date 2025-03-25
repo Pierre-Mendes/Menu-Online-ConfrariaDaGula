@@ -1,5 +1,6 @@
 $(document).ready(function () {
     cardapio.eventos.init();
+    $("#btnVerMais").addClass("hidden");
 });
 
 const cardapio = {
@@ -33,6 +34,7 @@ cardapio.eventos = {
         cardapio.metodos.carregarBotaoLigar();
         cardapio.metodos.carregarBotaoReserva();
         cardapio.metodos.carregarCarrinhoLocalStorage();
+        cardapio.metodos.sincronizarContadores();
 
         $("#txtCEP").on("input", debounce(cardapio.metodos.buscarCep, 500));
     },
@@ -41,67 +43,133 @@ cardapio.eventos = {
 cardapio.metodos = {
     obterItensCardapio: (categoria = "pascoa", vermais = false) => {
         const filtro = MENU[categoria];
+        const itensPorPagina = 8;
+        let itensCarregados = vermais ? itensPorPagina : 0;
 
         if (!vermais) {
             $("#itensCardapio").html("");
-            $("#btnVerMais").removeClass("hidden");
+            itensCarregados = 0;
         }
 
-        const limite = vermais ? [8, 12] : [0, 8];
-        filtro.slice(limite[0], limite[1]).forEach((e) => {
+        const proximosItens = filtro.slice(itensCarregados, itensCarregados + itensPorPagina);
+
+        proximosItens.forEach((e) => {
+            const itemNoCarrinho = MEU_CARRINHO.find(item => item.id == e.id);
+            const qntdInicial = itemNoCarrinho ? itemNoCarrinho.qntd : 0;
+            const btnText = itemNoCarrinho ? (qntdInicial > 0 ? 'Atualizar' : 'Remover') : 'Adicionar';
+            const btnClass = itemNoCarrinho ? (qntdInicial > 0 ? 'btn-primary' : 'btn-danger') : 'btn-primary';
+
             const temp = cardapio.templates.item
                 .replace(/\${img}/g, e.img)
                 .replace(/\${nome}/g, e.name)
                 .replace(/\${preco}/g, e.price.toFixed(2).replace(".", ","))
-                .replace(/\${id}/g, e.id);
+                .replace(/\${id}/g, e.id)
+                .replace('Adicionar', btnText)
+                .replace('btn-add', `btn-add ${btnClass}`)
+                .replace('id="qntd-${id}">0', `id="qntd-${e.id}">${qntdInicial}`);
 
             $("#itensCardapio").append(temp);
         });
 
+        itensCarregados += proximosItens.length;
+
+        $("#btnVerMais").toggleClass("hidden", itensCarregados >= filtro.length);
         $(".container-menu a").removeClass("active");
         $(`#menu-${categoryMap[categoria] || categoria}`).addClass("active");
     },
 
     verMais: () => {
         const ativo = $(".container-menu a.active").attr("id").split("menu-")[1];
-        cardapio.metodos.obterItensCardapio(ativo, true);
-        $("#btnVerMais").addClass("hidden");
+        $("#btnVerMais").html('<i class="fas fa-spinner fa-spin"></i> Carregando...');
+        setTimeout(() => {
+            cardapio.metodos.obterItensCardapio(ativo, true);
+            $("#btnVerMais").html('Ver mais');
+        }, 500);
     },
 
     alterarQuantidade: (id, operacao) => {
         const qntdAtual = parseInt($(`#qntd-${id}`).text());
-        const novaQntd =
-            operacao === "aumentar" ? qntdAtual + 1 : Math.max(qntdAtual - 1, 0);
+        let novaQntd;
+
+        if (operacao === 'aumentar') {
+            novaQntd = qntdAtual + 1;
+        } else if (operacao === 'diminuir') {
+            novaQntd = Math.max(qntdAtual - 1, 0);
+        } else {
+            cardapio.metodos.atualizarBotaoAcao(id);
+            return;
+        }
+
         $(`#qntd-${id}`).text(novaQntd);
+        cardapio.metodos.atualizarBotaoAcao(id);
     },
 
     adicionarAoCarrinho: (id) => {
         const qntdAtual = parseInt($(`#qntd-${id}`).text());
+        const categoria = $(".container-menu a.active").attr("id").split("menu-")[1];
+        const filtro = MENU[categoria];
+        const item = filtro.find((e) => e.id == id);
 
-        if (qntdAtual > 0) {
-            const categoria = $(".container-menu a.active")
-                .attr("id")
-                .split("menu-")[1];
-            const filtro = MENU[categoria];
-            const item = filtro.find((e) => e.id == id);
+        if (!item) return;
 
-            if (item) {
-                const existe = MEU_CARRINHO.find((elem) => elem.id == id);
+        const existeIndex = MEU_CARRINHO.findIndex((elem) => elem.id == id);
 
-                if (existe) {
-                    existe.qntd += qntdAtual;
-                } else {
-                    item.qntd = qntdAtual;
-                    MEU_CARRINHO.push(item);
-                }
-
-                cardapio.metodos.mensagem("Item adicionado ao carrinho", "green");
-                $(`#qntd-${id}`).text(0);
-
-                cardapio.metodos.atualizarBadgeTotal();
-                cardapio.metodos.carregarCarrinho();
-                cardapio.metodos.salvarCarrinhoLocalStorage();
+        if (qntdAtual === 0) {
+            // Remove o item do carrinho se existir
+            if (existeIndex !== -1) {
+                MEU_CARRINHO.splice(existeIndex, 1);
+                cardapio.metodos.mensagem("Item removido do carrinho", "green");
             }
+        } else {
+            // Adiciona ou atualiza a quantidade
+            if (existeIndex !== -1) {
+                MEU_CARRINHO[existeIndex].qntd = qntdAtual;
+                cardapio.metodos.mensagem("Quantidade atualizada", "green");
+            } else {
+                const novoItem = {...item, qntd: qntdAtual};
+                MEU_CARRINHO.push(novoItem);
+                cardapio.metodos.mensagem("Item adicionado ao carrinho", "green");
+            }
+        }
+
+        cardapio.metodos.atualizarBadgeTotal();
+        cardapio.metodos.carregarCarrinho();
+        cardapio.metodos.salvarCarrinhoLocalStorage();
+
+        const itemNoCarrinho = MEU_CARRINHO.find(item => item.id == id);
+        if (itemNoCarrinho) {
+            $(`#qntd-${id}`).text(itemNoCarrinho.qntd);
+        } else {
+            $(`#qntd-${id}`).text(0);
+        }
+
+        cardapio.metodos.atualizarBotaoAcao(id);
+    },
+
+    sincronizarContadores: () => {
+        MEU_CARRINHO.forEach(item => {
+            $(`#qntd-${item.id}`).text(item.qntd);
+        });
+    },
+
+    atualizarBotaoAcao: (id) => {
+        const qntdAtual = parseInt($(`#qntd-${id}`).text());
+        const itemNoCarrinho = MEU_CARRINHO.find(item => item.id == id);
+        const btnAction = $(`#btn-action-${id}`);
+
+        if (!btnAction.length) return;
+
+        if (itemNoCarrinho) {
+            if (qntdAtual === 0) {
+                btnAction.html('<i class="fa fa-trash"></i> Remover');
+                btnAction.removeClass('btn-primary').addClass('btn-danger');
+            } else {
+                btnAction.html('<i class="fa fa-shopping-bag"></i> Atualizar');
+                btnAction.removeClass('btn-danger').addClass('btn-primary');
+            }
+        } else {
+            btnAction.html('<i class="fa fa-shopping-bag"></i> Adicionar');
+            btnAction.removeClass('btn-danger').addClass('btn-primary');
         }
     },
 
@@ -382,17 +450,14 @@ cardapio.metodos = {
             let texto = `Olá! gostaria de fazer um pedido:\n*Itens do pedido:*\n\n${itens}`;
 
             if (MEU_ENDERECO) {
-                texto += `\n*Tipo de entrega:*\n${CLIENTE_ENTREGA}`;
+                texto += `\n\n*Tipo de entrega:*\n${CLIENTE_ENTREGA}`;
+                texto += `\n*⚠️ ATENÇÃO: A taxa de entrega será consultada e somada ao valor final*`;
                 texto += `\n\n*Endereço de entrega:*\n${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro}\n${MEU_ENDERECO.cidade}-${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento}`;
-                texto += `\n\n*Total (sem valor da entrega): R$ ${cardapio.VALOR_CARRINHO.toFixed(
-                    2
-                ).replace(".", ",")}*`;
+                texto += `\n\n*Valor parcial (sem taxa de entrega):* R$ ${cardapio.VALOR_CARRINHO.toFixed(2).replace(".", ",")}`;
+                texto += `\n*Valor final sujeito a alteração após confirmação da taxa de entrega*`;
             } else {
                 texto += `\n*Tipo de entrega:*\n${CLIENTE_RETIRADA}`;
-                texto += `\n\n*Total: R$ ${cardapio.VALOR_CARRINHO.toFixed(2).replace(
-                    ".",
-                    ","
-                )}*`;
+                texto += `\n\n*Total: R$ ${cardapio.VALOR_CARRINHO.toFixed(2).replace(".", ",")}*`;
             }
 
             const encode = encodeURI(texto);
@@ -530,17 +595,23 @@ cardapio.metodos = {
 cardapio.templates = {
     item: `
         <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
-            <div class="card card-item" id="\${id}"">
+            <div class="card card-item" id="\${id}">
                 <div class="img-produto">
                     <img src="\${img}" />
                 </div>
                 <p class="title-produto text-center mt-4"><b>\${nome}</b></p>
                 <p class="price-produto text-center"><b>R$ \${preco}</b></p>
                 <div class="add-carrinho">
-                    <span class="btn-menos" onclick="cardapio.metodos.alterarQuantidade('\${id}', 'diminuir')"><i class="fas fa-minus"></i></span>
+                    <span class="btn-menos" onclick="cardapio.metodos.alterarQuantidade('\${id}', 'diminuir')">
+                        <i class="fas fa-minus"></i>
+                    </span>
                     <span class="add-numero-itens" id="qntd-\${id}">0</span>
-                    <span class="btn-mais" onclick="cardapio.metodos.alterarQuantidade('\${id}', 'aumentar')"><i class="fas fa-plus"></i></span>
-                    <span class="btn btn-add" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')"><i class="fa fa-shopping-bag"></i></span>
+                    <span class="btn-mais" onclick="cardapio.metodos.alterarQuantidade('\${id}', 'aumentar')">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="btn btn-add" id="btn-action-\${id}" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')">
+                        <i class="fa fa-shopping-bag"></i> Adicionar
+                    </span>
                 </div>
             </div>
         </div>
