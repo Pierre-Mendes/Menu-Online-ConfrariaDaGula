@@ -150,10 +150,7 @@
             <div class="col-12 col-one container-menu wow fadeInUp">
                 <a id="menu-pascoa" class="btn btn-white btn-sm mr-3 active"
                    onclick="cardapio.metodos.obterItensCardapio('pascoa')"><i
-                        class="fas fa-egg"></i>&nbsp; Páscoa</a>
-                <a id="menu-sobremesas" class="btn btn-white btn-sm mr-3"
-                   onclick="cardapio.metodos.obterItensCardapio('sobremesas')"><i
-                        class="fas fa-business-time"></i>&nbsp; Encomendas</a>
+                        class="fas fa-egg"></i>&nbsp; Páscoa 2025</a>
             </div>
             <div class="col-12 col-one">
                 <div class="row" id="itensCardapio"></div>
@@ -164,57 +161,6 @@
         </div>
     </div>
 </section>
-
-<!-- Modal de Detalhamento de Produtos -->
-<div class="modal fade" id="modalProduto" tabindex="-1" role="dialog" aria-labelledby="modalProdutoLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalProdutoLabel">Detalhes do Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <!-- Carrossel de Imagens -->
-                    <div class="col-md-6">
-                        <div id="carouselProduto" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" id="carouselInner">
-                                <!-- As imagens do produto serão injetadas aqui via JavaScript -->
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselProduto" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselProduto" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Próximo</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Descrição e Controles do Produto -->
-                    <div class="col-md-6">
-                        <h4 id="produtoNome"></h4>
-                        <p id="produtoDescricao"></p>
-                        <p><strong>Preço:</strong> R$ <span id="produtoPreco"></span></p>
-                        <div class="form-group">
-                            <label for="quantidadeProduto">Quantidade:</label>
-                            <input type="number" id="quantidadeProduto" class="form-control" value="1" min="1">
-                        </div>
-                        <button class="btn btn-yellow" onclick="cardapio.metodos.adicionarAoCarrinhoModal()">Adicionar
-                            ao Carrinho
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Depoimentos -->
 <section class="depoimentos" id="depoimentos">
@@ -316,7 +262,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-3 col-md-3 col-sm-12 col-one container-logo-footer wow fadeIn">
-                <img class="logo-footer" src="./img/logo-confraria.png"/>
+                <img class="logo-footer" src="./img/logo-confraria.png" alt="logo-footer"/>
             </div>
             <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-one container-texto-footer wow fadeIn">
                 <p class="mb-0"><b>Confraria da Gula</b> &copy; Todos os direitos reservados</p>
@@ -345,9 +291,7 @@
                     <!-- Carrossel de Imagens -->
                     <div class="col-md-6">
                         <div id="carouselProduto" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" id="carouselProdutoInner">
-                                <!-- Imagens serão injetadas via JavaScript -->
-                            </div>
+                            <div class="carousel-inner" id="carouselProdutoInner"></div>
                             <a class="carousel-control-prev" href="#carouselProduto" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Anterior</span>

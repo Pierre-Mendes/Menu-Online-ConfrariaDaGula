@@ -1,29 +1,41 @@
-
 /* Desktop (col-lg) 992px+ */
 @media (min-width: 992px) {
-
+    #escolhaRetiradaEntrega .btn-yellow {
+        display: inline-block;
+        margin: 0 5px;
+    }
 }
 
 /* Desktop e Tablets (col-md) 768px a 991px */
 @media (min-width: 768px) and (max-width: 991px) {
-
+    #escolhaRetiradaEntrega .btn-yellow {
+        display: inline-block;
+        margin: 0 5px;
+    }
 }
 
 /* Tablets (col-sm) 576px a 767px */
 @media (min-width: 576px) and (max-width: 767px) {
+    #escolhaRetiradaEntrega .btn-yellow {
+        display: block;
+        width: 100%;
+        margin: 0 auto 15px auto;
+    }
 
+    #escolhaRetiradaEntrega .btn-yellow:last-child {
+        margin-bottom: 0;
+    }
 }
 
 /* Tablets e Celulares (col) 0px a 767px */
 @media (max-width: 767px) {
-
     .no-mobile {
-        display: none!important;
+        display: none !important;
     }
 
     .col-one {
-        padding-left: 35px!important;
-        padding-right: 35px!important;
+        padding-left: 35px !important;
+        padding-right: 35px !important;
     }
 
     .navbar-toggler-icon {
@@ -74,7 +86,7 @@
     }
 
     .btn-icon-left {
-        padding-left: 63px!important;
+        padding-left: 63px !important;
     }
 
     .title {
@@ -104,26 +116,27 @@
 
     .card-item {
         height: 110px;
-        padding-left: 110px;
+        padding-left: 100px;
         justify-content: center;
         align-items: start;
     }
 
     .card-item .img-produto img {
-        width: 80px;
+        width: 75px;
+        height: 90px;
     }
 
     .title-produto {
         margin-top: 0 !important;
-        height: 30px!important;
+        height: 30px !important;
         width: 100%;
-        text-align: left!important;
+        text-align: left !important;
     }
 
     .price-produto {
         margin-bottom: 0 !important;
         margin-top: 0 !important;
-        font-size: 22px!important;
+        font-size: 22px !important;
     }
 
     .card-item .add-carrinho {
@@ -131,7 +144,7 @@
     }
 
     #itensCardapio .mb-5 {
-        margin-bottom: 15px!important;
+        margin-bottom: 15px !important;
     }
 
     .depoimentos {
@@ -186,7 +199,7 @@
     }
 
     .modal-full .title-produto, .modal-full .price-produto {
-        font-size: 16px!important;
+        font-size: 16px !important;
     }
 
     .modal-full .add-numero-itens {
@@ -205,5 +218,108 @@
         width: 100%;
     }
 
+    #modalDetalhesProduto .modal-dialog {
+        margin: 10px;
+    }
 
+    #modalDetalhesProduto .row {
+        flex-direction: column;
+    }
+
+    #modalDetalhesProduto .col-md-6 {
+        width: 100%;
+    }
+
+    #modalDetalhesProduto .carousel-item img {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    #modalDetalhesProduto .modal-dialog {
+        margin: 10px;
+    }
+
+    #modalDetalhesProduto .row {
+        flex-direction: column;
+    }
+
+    #modalDetalhesProduto .col-md-6 {
+        width: 100%;
+    }
+
+    #modalDetalhesProduto .carousel-item img {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 360px) {
+    #escolhaRetiradaEntrega .btn-yellow {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    #escolhaRetiradaEntrega .btn-yellow:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    #escolhaRetiradaEntrega .btn-yellow {
+        display: inline-block;
+        width: auto;
+        min-width: 150px; /* Largura mínima para manter proporção */
+        margin: 0 10px 15px 10px; /* Espaçamento entre botões */
+    }
+
+    #escolhaRetiradaEntrega .btn-yellow:last-child {
+        margin-bottom: 15px;
+    }
+}
+
+/* Ajuste para tablets */
+@media (min-width: 576px) and (max-width: 991px) {
+    footer .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer .col-md-3,
+    footer .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .container-texto-footer {
+        order: 3;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    /* Banner principal */
+    .banner .img-banner-home img {
+        height: auto;
+        max-width: 100%;
+        width: auto;
+        max-height: 500px;
+    }
+
+    .card-banner {
+        padding: 20px;
+    }
+
+    /* Seção de reserva */
+    .card-reserva, .img-banner img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .reserva .col-md-7 {
+        padding-right: 15px !important;
+    }
 }

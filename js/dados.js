@@ -1,68 +1,44 @@
 const MENU = {
     "pascoa": [
         {
-            "id": "15259-german-chocolate-killer-brownie-tin-pack",
-            "img": "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
-            "name": "Killer Brownie®",
-            "dsc": "German Chocolate Killer Brownie®",
-            "price": 39.99,
-            "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
+            "id": "pao-de-mel-1",
+            "img": "./img/cardapio/pascoa/pao-de-mel.jpeg",
+            "name": "Pão de Mel®",
+            "dsc": "Pães de mel super macios - unidade",
+            "price": 10.00,
+            "descricao": " Pães de mel super macios, envoltos na casquinha de chocolate com tema de Páscoa.\n" +
+                "Opções de recheios:\n" +
+                "Brigadeiro,\n" +
+                "Morango,\n" +
+                "Leite em pó,\n" +
+                "Doce de Leite.",
             "imagens": [
-                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
-                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
-                "./img/cardapio/sobremesas/german-chocolate-killer-brownie-tin-pack.5ebc34160f28767a9d94c4da2e04c4b9.jpg",
+                "./img/cardapio/pascoa/pao-de-mel.jpeg"
             ]
         },
         {
-            "id": "jacques-world-famous-chocolate-chip-cookies",
-            "img": "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
-            "name": "Jacques Torres Chocolate",
-            "dsc": "Jacques' World Famous Chocolate Chip Cookies - 6 Pack",
-            "price": 39.95,
-            "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
+            "id": "biscoito-amanteigado-chocolate-2",
+            "img": "./img/cardapio/pascoa/biscoito-amanteigado-chocolate.jpeg",
+            "name": "Biscoito Cocolate",
+            "dsc": "Biscoito amanteigado (sem recheio) - unidade",
+            "price": 5.00,
+            "descricao": "Biscoito amanteigado (sem recheio) com mini barrinhas de chocolate personalizados com tema Páscoa.",
             "imagens": [
-                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
-                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
-                "./img/cardapio/sobremesas/jacques-world-famous-chocolate-chip-cookies-6-pack.2217a14c443602493bba88aa9335319a.jpg",
+                "./img/cardapio/pascoa/biscoito-amanteigado-chocolate.jpeg"
             ]
         },
         {
-            "id": "luigis-original-cannoli-pie",
-            "img": "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
-            "name": "The Cannoli Pie Company",
-            "dsc": "Original Cannoli Pie",
-            "price": 69,
-            "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
-            "imagens": [
-                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
-                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
-                "./img/cardapio/sobremesas/original-cannoli-pie.4cb5b9ba82f57b69b90765fd9f07aa1a.jpg",
-            ]
-        },
-        {
-            "id": "sea-salted-caramel-swirl-cheesecake",
-            "img": "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
-            "name": "Cotton Blues Cheesecake Company",
-            "dsc": "Sea-Salted Caramel Swirl Cheesecake",
+            "id": "bolo-gulodice-do-coelho-3",
+            "img": "./img/cardapio/pascoa/bolo-gulodice-do-coelho.jpeg",
+            "name": "Bolo Gulodice do Coelho",
+            "dsc": "Bolo de cenoura OU bolo de chocolate",
             "price": 65,
-            "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
+            "descricao": "Bolo de cenoura OU bolo de chocolate, coberto com brigadeiro cremoso.\n" +
+                "Decorado com cenourinhas e coelho cavando o bolo.\n" +
+                "Peso: 1,200 kg (Tam. Médio)\n" +
+                "Rendimento: Serve aprox. 14 fatias.",
             "imagens": [
-                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
-                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
-                "./img/cardapio/sobremesas/sea-salted-caramel-swirl-cheesecake.e2825335433fb7a272a5d77649a6849e.jpg",
-            ]
-        },
-        {
-            "id": "brooklyn-blackout-cookie-brownie-combo-pack-2-tins",
-            "img": "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
-            "name": "Brooklyn Blackout Company",
-            "dsc": "Brooklyn Blackout Cookie + Brownie Combo Pack - 2 Tins",
-            "price": 89,
-            "descricao": "Delicioso prato de ribs, brisket e burnt ends, perfeito para churrascos.",
-            "imagens": [
-                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
-                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
-                "./img/cardapio/sobremesas/brooklyn-blackout-cookie-brownie-combo-pack-2-tins.d8805325baf6b23b4f01d119dc4531a7.jpg",
+                "./img/cardapio/pascoa/bolo-gulodice-do-coelho.jpeg"
             ]
         },
     ],
