@@ -359,3 +359,67 @@
         padding: 0 10px 15px;
     }
 }
+
+@media (min-width: 992px) {
+    .card-item {
+        cursor: default;
+    }
+
+    .card-item:hover {
+        transform: translateY(-5px);
+        background-color: var(--color-primary);
+    }
+
+    .card-item:hover .title-produto {
+        display: none;
+    }
+
+    .card-item:hover .add-carrinho {
+        display: flex;
+    }
+}
+
+/* Estilos para tablets e celulares */
+@media (max-width: 991px) {
+    .card-item {
+        cursor: pointer; /* Muda cursor para indicar área clicável */
+        position: relative;
+    }
+
+    /* Cria overlay invisível para toda área do card */
+    .card-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    /* Remove efeitos hover em dispositivos touch */
+    .card-item:hover {
+        transform: none;
+        background-color: white;
+    }
+
+    .card-item:hover .title-produto {
+        display: block;
+    }
+
+    .card-item:hover .add-carrinho {
+        display: none; /* Não mostra botões em mobile */
+    }
+
+    /* Ajusta tamanho da imagem para mobile */
+    .card-item .img-produto {
+        height: 100px;
+    }
+}
+
+/* Ajuste específico para telas muito pequenas */
+@media (max-width: 575px) {
+    .card-item .img-produto {
+        height: 80px;
+    }
+}

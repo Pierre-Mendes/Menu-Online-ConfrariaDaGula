@@ -1,6 +1,19 @@
-$(document).ready(function () {
+$(document).ready(function() {
     cardapio.eventos.init();
     $("#btnVerMais").addClass("hidden");
+
+    function isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    }
+
+    if(isMobileDevice() || window.innerWidth < 992) {
+        $('.card-item').on('click', function(e) {
+            if($(e.target).closest('.img-produto').length === 0) {
+                const productId = $(this).attr('id');
+                cardapio.metodos.abrirDetalhesProduto(productId);
+            }
+        });
+    }
 });
 
 const cardapio = {
@@ -620,7 +633,7 @@ cardapio.metodos = {
 
 cardapio.templates = {
     item: `
-        <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
+        <div class="col-12 col-lg-3 col-md-4 col-sm-6 mb-4 animated fadeInUp">
             <div class="card card-item" id="\${id}">
                 <div class="img-produto" onclick="cardapio.metodos.abrirDetalhesProduto('\${id}')" style="cursor: pointer;">
                     <img src="\${img}" />
